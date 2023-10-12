@@ -59,5 +59,8 @@ public class CartPage extends BasicPage{
             getTheTitlesOfItems().get(i).click();
         }
     }
+    public void clickOnTheFirstTitle () {
+        getTheTitlesOfItems().get(0).click();
+    }
 
 }
