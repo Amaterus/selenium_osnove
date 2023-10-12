@@ -18,11 +18,13 @@ public abstract class BasicTest {
     protected WebDriverWait wait;
     protected String baseUrl = "https://www.saucedemo.com";
     protected String baseTitle = "Swag Labs";
+    protected String subHeaderCartPage = "Your Cart";
     protected LoginPage loginPage;
     protected LeftNavPage leftNavPage;
     protected InventoryPage inventoryPage;
     protected TopNavPage topNavPage;
     protected CartPage cartPage;
+    protected SubHeaderPage subHeaderPage;
 
     @BeforeClass
     public void setup() {
@@ -37,6 +39,7 @@ public abstract class BasicTest {
         inventoryPage = new InventoryPage(driver, wait);
         topNavPage = new TopNavPage(driver, wait);
         cartPage = new CartPage(driver, wait);
+        subHeaderPage = new SubHeaderPage(driver, wait);
 
     }
 
