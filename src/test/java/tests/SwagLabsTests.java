@@ -2,6 +2,7 @@ package tests;
 
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import retry.SwagLabsRetry;
@@ -320,7 +321,7 @@ public class SwagLabsTests extends BasicTest{
         loginPage.login(username, password);
         inventoryPage.clickOnAddToCartButtonForSauceLabsBackpack();
         topNavPage.clickOnTheShoppingCartButton();
-        Assert.assertTrue(cartPage.doesnItemsTitleIsPresented(),
+        Assert.assertTrue(cartPage.doesnItemsDescriptionIsPresented(),
                 "Description of the added item should be visible.");
     }
     @Test (retryAnalyzer = SwagLabsRetry.class)
@@ -379,5 +380,17 @@ public class SwagLabsTests extends BasicTest{
         topNavPage.clickOnTheShoppingCartButton();
         Assert.assertTrue(cartPage.doesRemoveButtonsAreVisible(),
                 "Remove button should be visible.");
+    }
+    @Test (retryAnalyzer = SwagLabsRetry.class)
+    public void verifyIfTheRemoveButtonIsWorking () throws InterruptedException {
+        String username = "standard_user";
+        String password = "secret_sauce";
+
+        loginPage.login(username, password);
+        inventoryPage.clickOnTheAddToCartButtons();
+        topNavPage.clickOnTheShoppingCartButton();
+        cartPage.clickOnTheRemoveButtonForBackpack();
+        Assert.assertTrue(!cartPage.doesItemExistAfterRemoving(),
+                "The item should disappear after removing");
     }
 }
