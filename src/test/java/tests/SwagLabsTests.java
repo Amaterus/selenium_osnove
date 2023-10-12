@@ -247,4 +247,12 @@ public class SwagLabsTests extends BasicTest{
         Assert.assertTrue(leftNavPage.spellingOfAllOptions(),
                 "Spelling of options in menu is not correct.");
     }
+    @Test (retryAnalyzer = SwagLabsRetry.class)
+    public void verifyIfAllItemsOptionIsWorking () {
+        verifyIfTheHamburgerButtonIsWorking();
+        leftNavPage.clickOnTheAllItemsFromMenuOption();
+        Assert.assertEquals(driver.getCurrentUrl(),
+                baseUrl + "/inventory.html",
+                "Should be redirected to the products page.");
+    }
 }
