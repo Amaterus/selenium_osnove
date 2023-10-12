@@ -25,5 +25,9 @@ public class CartPage extends BasicPage{
         By by = By.cssSelector("#item_4_title_link .inventory_item_name");
         return elementExists(by);
     }
+    public boolean doesnItemDescriptionIsPresented () {
+        By by = By.cssSelector(".cart_item .inventory_item_desc");
+        return elementExists(by);
+    }
 
 }
