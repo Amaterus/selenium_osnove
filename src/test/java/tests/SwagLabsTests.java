@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.BasicPage;
 import retry.SwagLabsRetry;
 
 public class SwagLabsTests extends BasicTest{
@@ -469,5 +470,18 @@ public class SwagLabsTests extends BasicTest{
         topNavPage.clickOnTheShoppingCartButton();
         Assert.assertTrue(footer.getTheLinkedinButton().isDisplayed(),
                 "Linkedin button should be presented on the page");
+    }
+    @Test (retryAnalyzer = SwagLabsRetry.class)
+    public void verifyIfTheTwitterButtonIsWorking () throws InterruptedException {
+        String username = "standard_user";
+        String password = "secret_sauce";
+
+        loginPage.login(username, password);
+        topNavPage.clickOnTheShoppingCartButton();
+        footer.clickOnTheTwitterButton();
+        driver.navigate().to("https://twitter.com/saucelabs");
+        wait    .withMessage("Should be redirected to the sauce labs twitter account")
+                .until(ExpectedConditions.urlToBe("https://twitter.com/saucelabs"));
+
     }
 }
