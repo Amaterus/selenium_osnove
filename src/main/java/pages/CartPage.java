@@ -21,12 +21,16 @@ public class CartPage extends BasicPage{
     public boolean areTheItemsAdded () {
         return elementExists(By.className("cart_item"));
     }
-    public boolean doesnItemTitleIsPresented () {
+    public boolean doesnItemsTitleIsPresented () {
         By by = By.cssSelector("#item_4_title_link .inventory_item_name");
         return elementExists(by);
     }
-    public boolean doesnItemDescriptionIsPresented () {
+    public boolean doesnItemsDescriptionIsPresented () {
         By by = By.cssSelector(".cart_item .inventory_item_desc");
+        return elementExists(by);
+    }
+    public boolean doesnItemsPriceIsPresented () {
+        By by = By.cssSelector(".cart_item .inventory_item_price");
         return elementExists(by);
     }
 

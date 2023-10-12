@@ -309,7 +309,7 @@ public class SwagLabsTests extends BasicTest{
         loginPage.login(username, password);
         inventoryPage.clickOnAddToCartButtonForSauceLabsBackpack();
         topNavPage.clickOnTheShoppingCartButton();
-        Assert.assertTrue(cartPage.doesnItemTitleIsPresented(),
+        Assert.assertTrue(cartPage.doesnItemsTitleIsPresented(),
                 "Title of the added item should be visible.");
     }
     @Test (retryAnalyzer = SwagLabsRetry.class)
@@ -320,7 +320,18 @@ public class SwagLabsTests extends BasicTest{
         loginPage.login(username, password);
         inventoryPage.clickOnAddToCartButtonForSauceLabsBackpack();
         topNavPage.clickOnTheShoppingCartButton();
-        Assert.assertTrue(cartPage.doesnItemTitleIsPresented(),
+        Assert.assertTrue(cartPage.doesnItemsTitleIsPresented(),
                 "Description of the added item should be visible.");
+    }
+    @Test (retryAnalyzer = SwagLabsRetry.class)
+    public void verifyIfTheItemsPriceIsPresented () {
+        String username = "standard_user";
+        String password = "secret_sauce";
+
+        loginPage.login(username, password);
+        inventoryPage.clickOnAddToCartButtonForSauceLabsBackpack();
+        topNavPage.clickOnTheShoppingCartButton();
+        Assert.assertTrue(cartPage.doesnItemsPriceIsPresented(),
+                "Price of the added item should be visible.");
     }
 }
