@@ -62,5 +62,8 @@ public class CartPage extends BasicPage{
     public void clickOnTheFirstTitle () {
         getTheTitlesOfItems().get(0).click();
     }
+    public boolean doesRemoveButtonsAreVisible () {
+        return elementExists((By.cssSelector(".cart_item_label button.cart_button")));
+    }
 
 }
