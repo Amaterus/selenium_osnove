@@ -241,4 +241,10 @@ public class SwagLabsTests extends BasicTest{
         Assert.assertEquals(leftNavPage.numberOfMenuOptions(), 4,
                 "Total number of menu options should be four.");
     }
+    @Test (retryAnalyzer = SwagLabsRetry.class)
+    public void verifyTheSpellingOfAllOptionsInMenu () {
+        verifyIfTheHamburgerButtonIsWorking();
+        Assert.assertTrue(leftNavPage.spellingOfAllOptions(),
+                "Spelling of options in menu is not correct.");
+    }
 }

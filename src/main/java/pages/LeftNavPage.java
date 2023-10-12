@@ -33,8 +33,21 @@ public class LeftNavPage extends BasicPage{
     public boolean doesLogoutButtonExist () {
         return elementExists(By.linkText("Logout"));
     }
-    public int numberOfMenuOptions () {
+    public List<WebElement> getTheMenuOptions () {
         List<WebElement> options = driver.findElements(By.cssSelector(".bm-item-list a"));
-        return options.size();
+        return options;
+    }
+    public int numberOfMenuOptions () {
+        return getTheMenuOptions().size();
+    }
+    public boolean spellingOfAllOptions () {
+        boolean correctSpelling = false;
+        if (getTheMenuOptions().get(0).getText().equals("All Items")
+                && getTheMenuOptions().get(1).getText().equals("About")
+                && getTheMenuOptions().get(2).getText().equals("Logout")
+                && getTheMenuOptions().get(3).getText().equals("Reset App State")) {
+            correctSpelling = true;
+        }
+        return correctSpelling;
     }
 }
