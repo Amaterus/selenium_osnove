@@ -18,5 +18,8 @@ public class CartPage extends BasicPage{
     public String getNumberInSpan () {
         return driver.findElement(By.className("shopping_cart_badge")).getText();
     }
+    public boolean areTheItemsAdded () {
+        return elementExists(By.className("cart_item"));
+    }
 
 }
