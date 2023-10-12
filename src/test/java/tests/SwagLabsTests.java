@@ -334,4 +334,15 @@ public class SwagLabsTests extends BasicTest{
         Assert.assertTrue(cartPage.doesnItemsPriceIsPresented(),
                 "Price of the added item should be visible.");
     }
+    @Test (retryAnalyzer = SwagLabsRetry.class)
+    public void verifyIfTheItemsQuantityIsPresented () {
+        String username = "standard_user";
+        String password = "secret_sauce";
+
+        loginPage.login(username, password);
+        inventoryPage.clickOnAddToCartButtonForSauceLabsBackpack();
+        topNavPage.clickOnTheShoppingCartButton();
+        Assert.assertTrue(cartPage.doesnItemsQuantityIsPresented(),
+                "Quantity of the added item should be visible.");
+    }
 }
