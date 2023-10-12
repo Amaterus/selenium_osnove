@@ -201,4 +201,11 @@ public class SwagLabsTests extends BasicTest{
         verifyIfTheHamburgerMenuButtonIsEnabled();
         leftNavPage.waitForLeftMenuToBeVisible();
     }
+    @Test (retryAnalyzer = SwagLabsRetry.class)
+    public void verifyIfTheCartIconIsWorking () {
+        verifyIfTheCartIconIsEnabled();
+        Assert.assertEquals(driver.getCurrentUrl(),
+                baseUrl + "/cart.html",
+                "Should be redirected to cart page after click on the cart button.");
+    }
 }
