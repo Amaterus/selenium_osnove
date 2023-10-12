@@ -12,4 +12,10 @@ public class TopNavPage extends BasicPage{
     public String getTheNumberOfItemInShoppingCast () {
         return driver.findElement(By.className("shopping_cart_badge")).getText();
     }
+    public WebElement getTheShoppingCartButton () {
+        return driver.findElement(By.className("shopping_cart_link"));
+    }
+    public void clickOnTheShoppingCartButton () {
+        getTheShoppingCartButton().click();
+    }
 }

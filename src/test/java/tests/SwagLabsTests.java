@@ -90,4 +90,23 @@ public class SwagLabsTests extends BasicTest{
                 "1",
                 "The number of items should be increased by 1");
     }
+    @Test (retryAnalyzer = SwagLabsRetry.class)
+    public void verifyTheUrlOnTheCartPage () {
+        String username = "standard_user";
+        String password = "secret_sauce";
+
+        loginPage.clearAndTypeUsername(username);
+        loginPage.clearAndTypePassword(password);
+        loginPage.clickOnLoginButton();
+
+        Assert.assertEquals(driver.getCurrentUrl(),
+                baseUrl + "/inventory.html",
+                "Should be redirected to inventory page after login.");
+
+        topNavPage.clickOnTheShoppingCartButton();
+        Assert.assertEquals(driver.getCurrentUrl(),
+                baseUrl + "/cart.html",
+                "Should be redirected to cart page after click on the cart button.");
+
+    }
 }
