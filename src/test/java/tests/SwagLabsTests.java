@@ -284,4 +284,10 @@ public class SwagLabsTests extends BasicTest{
         Assert.assertTrue(leftNavPage.doesEkisButtonExistInMenu(),
                 "Ekis button should be visible in menu");
     }
+    @Test (retryAnalyzer = SwagLabsRetry.class)
+    public void verifyIfTheEkisButtonsIsWorking () {
+        verifyIfTheHamburgerButtonIsWorking();
+        leftNavPage.clickOnTheEkisButtonFromMenu();
+        leftNavPage.waitForLeftMenuToBeInvisible();
+    }
 }

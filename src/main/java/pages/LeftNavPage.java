@@ -24,6 +24,10 @@ public class LeftNavPage extends BasicPage{
         wait    .withMessage("Left menu is not visible in 10s.")
                 .until(ExpectedConditions.visibilityOf(getLeftMenu()));
     }
+    public void waitForLeftMenuToBeInvisible () {
+        wait    .withMessage("Left menu is still visible after closing.")
+                .until(ExpectedConditions.invisibilityOf(getLeftMenu()));
+    }
     public WebElement getButtonLogout () {
         return driver.findElement(By.id("logout_sidebar_link"));
     }
@@ -79,5 +83,8 @@ public class LeftNavPage extends BasicPage{
     }
     public WebElement getEkisButtonFromMenu () {
         return driver.findElement(By.id("react-burger-cross-btn"));
+    }
+    public void clickOnTheEkisButtonFromMenu () {
+        getEkisButtonFromMenu().click();
     }
 }
