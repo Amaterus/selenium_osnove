@@ -482,6 +482,18 @@ public class SwagLabsTests extends BasicTest{
         driver.navigate().to("https://twitter.com/saucelabs");
         wait    .withMessage("Should be redirected to the sauce labs twitter account")
                 .until(ExpectedConditions.urlToBe("https://twitter.com/saucelabs"));
+    }
+    @Test (retryAnalyzer = SwagLabsRetry.class)
+    public void verifyIfTheFacebookButtonIsWorking () throws InterruptedException {
+        String username = "standard_user";
+        String password = "secret_sauce";
+
+        loginPage.login(username, password);
+        topNavPage.clickOnTheShoppingCartButton();
+        footer.clickOnTheFacebookButton();
+        driver.navigate().to("https://www.facebook.com/saucelabs");
+        wait    .withMessage("Should be redirected to the sauce labs facebook account")
+                .until(ExpectedConditions.urlToBe("https://www.facebook.com/saucelabs"));
 
     }
 }
