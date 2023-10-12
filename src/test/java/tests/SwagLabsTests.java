@@ -95,9 +95,7 @@ public class SwagLabsTests extends BasicTest{
         String username = "standard_user";
         String password = "secret_sauce";
 
-        loginPage.clearAndTypeUsername(username);
-        loginPage.clearAndTypePassword(password);
-        loginPage.clickOnLoginButton();
+        loginPage.login(username, password);
 
         Assert.assertEquals(driver.getCurrentUrl(),
                 baseUrl + "/inventory.html",
@@ -114,9 +112,7 @@ public class SwagLabsTests extends BasicTest{
         String username = "standard_user";
         String password = "secret_sauce";
 
-        loginPage.clearAndTypeUsername(username);
-        loginPage.clearAndTypePassword(password);
-        loginPage.clickOnLoginButton();
+        loginPage.login(username, password);
 
         Assert.assertEquals(driver.getCurrentUrl(),
                 baseUrl + "/inventory.html",
@@ -132,9 +128,7 @@ public class SwagLabsTests extends BasicTest{
         String username = "standard_user";
         String password = "secret_sauce";
 
-        loginPage.clearAndTypeUsername(username);
-        loginPage.clearAndTypePassword(password);
-        loginPage.clickOnLoginButton();
+        loginPage.login(username, password);
 
         Assert.assertEquals(driver.getCurrentUrl(),
                 baseUrl + "/inventory.html",
@@ -149,9 +143,7 @@ public class SwagLabsTests extends BasicTest{
         String username = "standard_user";
         String password = "secret_sauce";
 
-        loginPage.clearAndTypeUsername(username);
-        loginPage.clearAndTypePassword(password);
-        loginPage.clickOnLoginButton();
+        loginPage.login(username, password);
 
         Assert.assertEquals(driver.getCurrentUrl(),
                 baseUrl + "/inventory.html",
@@ -160,5 +152,19 @@ public class SwagLabsTests extends BasicTest{
         topNavPage.clickOnTheShoppingCartButton();
         Assert.assertTrue(topNavPage.doesHamburgerMenuButtonExist(),
                 "Menu button should be present on the Cart Page.");
+    }
+    @Test (retryAnalyzer = SwagLabsRetry.class)
+    public void verifyIfTheCartIconIsPresented () {
+        String username = "standard_user";
+        String password = "secret_sauce";
+
+        loginPage.login(username, password);
+
+        Assert.assertEquals(driver.getCurrentUrl(),
+                baseUrl + "/inventory.html",
+                "Should be redirected to inventory page after login.");
+        topNavPage.clickOnTheShoppingCartButton();
+        Assert.assertTrue(topNavPage.doesCartIconExist(),
+                "Cart icon should be present on the Cart Page.");
     }
 }
