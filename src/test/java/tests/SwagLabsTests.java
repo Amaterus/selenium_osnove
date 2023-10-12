@@ -404,4 +404,16 @@ public class SwagLabsTests extends BasicTest{
         Assert.assertTrue(cartPage.getContinueShoppingButton().isDisplayed(),
                 "Button continue shopping should be presented.");
     }
+    @Test (retryAnalyzer = SwagLabsRetry.class)
+    public void verifyIfTheContinueShoppingButtonIsWorking () {
+        String username = "standard_user";
+        String password = "secret_sauce";
+
+        loginPage.login(username, password);
+        inventoryPage.clickOnTheAddToCartButtons();
+        topNavPage.clickOnTheShoppingCartButton();
+        cartPage.clickOnTheContinueShoppingButton();
+        wait    .withMessage("Should be redirected to the products page")
+                .until(ExpectedConditions.urlContains("/inventory.html"));
+    }
 }
