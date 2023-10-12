@@ -235,4 +235,10 @@ public class SwagLabsTests extends BasicTest{
                 "Sub-header should be 'Your Cart' on the Cart Page.");
 
     }
+    @Test (retryAnalyzer = SwagLabsRetry.class)
+    public void verifyTheTotalNumberOfMenuOptions () {
+        verifyIfTheHamburgerButtonIsWorking();
+        Assert.assertEquals(leftNavPage.numberOfMenuOptions(), 4,
+                "Total number of menu options should be four.");
+    }
 }
