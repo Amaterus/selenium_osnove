@@ -74,4 +74,10 @@ public class LeftNavPage extends BasicPage{
     public void clickOnTheResetFromMenuOption () {
         getTheResetFromMenuOption().click();
     }
+    public boolean doesEkisButtonExistInMenu () {
+        return elementExists(By.id("react-burger-cross-btn"));
+    }
+    public WebElement getEkisButtonFromMenu () {
+        return driver.findElement(By.id("react-burger-cross-btn"));
+    }
 }
