@@ -167,4 +167,19 @@ public class SwagLabsTests extends BasicTest{
         Assert.assertTrue(topNavPage.doesCartIconExist(),
                 "Cart icon should be present on the Cart Page.");
     }
+    @Test (retryAnalyzer = SwagLabsRetry.class)
+    public void verifyIfTheHamburgerMenuButtonIsEnabled () {
+        String username = "standard_user";
+        String password = "secret_sauce";
+
+        loginPage.login(username, password);
+
+        Assert.assertEquals(driver.getCurrentUrl(),
+                baseUrl + "/inventory.html",
+                "Should be redirected to inventory page after login.");
+        topNavPage.clickOnTheShoppingCartButton();
+        topNavPage.clickOnTheHamburgerMenuButton();
+        Assert.assertTrue(topNavPage.doesHamburgerMenuIsEnabled(),
+                "Hamburger menu button is not enabled.");
+    }
 }
