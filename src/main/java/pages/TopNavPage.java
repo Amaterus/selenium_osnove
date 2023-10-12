@@ -21,4 +21,7 @@ public class TopNavPage extends BasicPage{
     public String getTheTitleInHeader () {
         return driver.findElement(By.className("app_logo")).getText();
     }
+    public boolean doesHamburgerMenuButtonExist () {
+        return elementExists(By.id("react-burger-menu-btn"));
+    }
 }
