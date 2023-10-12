@@ -270,4 +270,12 @@ public class SwagLabsTests extends BasicTest{
         Assert.assertEquals(driver.getCurrentUrl(),
                 baseUrl + "/", "Should be redirected to the login page");
     }
+    @Test (retryAnalyzer = SwagLabsRetry.class)
+    public void verifyIfResetAppStateIsWorking () {
+        verifyIfTheHamburgerButtonIsWorking();
+        inventoryPage.clickOnAddToCartButtonForSauceLabsBackpack();
+        leftNavPage.clickOnTheResetFromMenuOption();
+        topNavPage.getTheShoppingCartButton();
+        Assert.assertTrue(topNavPage.invisibilityOfNumberItemsInCart());
+    }
 }
