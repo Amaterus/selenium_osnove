@@ -17,6 +17,7 @@ public abstract class BasicTest {
     protected WebDriver driver;
     protected WebDriverWait wait;
     protected String baseUrl = "https://www.saucedemo.com";
+    protected String baseTitle = "Swag Labs";
     protected LoginPage loginPage;
     protected LeftNavPage leftNavPage;
     protected InventoryPage inventoryPage;

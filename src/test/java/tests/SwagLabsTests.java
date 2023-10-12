@@ -109,4 +109,22 @@ public class SwagLabsTests extends BasicTest{
                 "Should be redirected to cart page after click on the cart button.");
 
     }
+    @Test (retryAnalyzer = SwagLabsRetry.class)
+    public void verifyTheTitleOfCartPage () {
+        String username = "standard_user";
+        String password = "secret_sauce";
+
+        loginPage.clearAndTypeUsername(username);
+        loginPage.clearAndTypePassword(password);
+        loginPage.clickOnLoginButton();
+
+        Assert.assertEquals(driver.getCurrentUrl(),
+                baseUrl + "/inventory.html",
+                "Should be redirected to inventory page after login.");
+
+        topNavPage.clickOnTheShoppingCartButton();
+        Assert.assertEquals(driver.getTitle(),
+                baseTitle,
+                "Title should be Swag Labs.");
+    }
 }
