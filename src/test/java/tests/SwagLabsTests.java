@@ -127,4 +127,21 @@ public class SwagLabsTests extends BasicTest{
                 baseTitle,
                 "Title should be Swag Labs.");
     }
+    @Test (retryAnalyzer = SwagLabsRetry.class)
+    public void verifyTheTitleInHeaderOnCartPage () {
+        String username = "standard_user";
+        String password = "secret_sauce";
+
+        loginPage.clearAndTypeUsername(username);
+        loginPage.clearAndTypePassword(password);
+        loginPage.clickOnLoginButton();
+
+        Assert.assertEquals(driver.getCurrentUrl(),
+                baseUrl + "/inventory.html",
+                "Should be redirected to inventory page after login.");
+
+        topNavPage.clickOnTheShoppingCartButton();
+        Assert.assertEquals(topNavPage.getTheTitleInHeader(),
+                baseTitle, "Title in header on the Cart Page should be Swag Labs.");
+    }
 }

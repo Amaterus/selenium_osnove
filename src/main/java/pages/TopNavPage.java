@@ -18,4 +18,7 @@ public class TopNavPage extends BasicPage{
     public void clickOnTheShoppingCartButton () {
         getTheShoppingCartButton().click();
     }
+    public String getTheTitleInHeader () {
+        return driver.findElement(By.className("app_logo")).getText();
+    }
 }
